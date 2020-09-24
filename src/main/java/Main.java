@@ -14,13 +14,13 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
 
-        Probe test = new Probe("/test");
-        test.addRule(new Filter("cassandra", "in"));
-        test.addRule(new Filter("disk", "not-in"));
-        test.setAction(new Script("ls -lah"));
-
-        ProbeManager probeManager = new ProbeManager(7000);
-        probeManager.addProbe(test);
+//        Probe test = new Probe("/test");
+//        test.addRule(new Filter("cassandra", "in"));
+//        test.addRule(new Filter("disk", "not-in"));
+//        test.setAction(new Script("ls -lah"));
+//
+//        ProbeManager probeManager = new ProbeManager(7000);
+//        probeManager.addProbe(test);
 
 
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory())
@@ -30,19 +30,18 @@ public class Main {
                 .disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
 
         try {
-            ProbeManager probeManager1 = mapper.readValue(new File("src/main/resources/probe.yaml"), ProbeManager.class);
-            System.err.println("a");
+            ProbeManager probeManager = mapper.readValue(new File("src/main/resources/probe.yaml"), ProbeManager.class);
+            probeManager.init();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
 
-        try {
-            mapper.writeValue(new File("src/main/resources/probe.yaml"), probeManager);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            mapper.writeValue(new File("src/main/resources/probe.yaml"), probeManager);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
-//        probeManager.init();
     }
 }

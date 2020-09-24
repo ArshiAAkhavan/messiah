@@ -15,7 +15,7 @@ public class ProbeManager {
         server =new Server(port);
     }
     public ProbeManager() {
-        new ProbeManager(8000);
+        server= new Server(8000);
     }
 
     public void addProbe(Probe probe){
