@@ -1,12 +1,22 @@
 package model.Rule;
 
+import model.Rule.Operator.Equal;
+import model.Rule.Operator.In;
+import model.Rule.Operator.NotIn;
 import model.Rule.Operator.Operator;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Filter implements Rule{
-    private Map<String,Operator> operators=new HashMap<>();
+import static java.util.Map.entry;
+
+public class Filter implements Rule {
+    private static final Map<String, Operator> operators = Map.of(
+            "in", new In(),
+            "not-in", new NotIn(),
+            "equal", new Equal()
+    );
+
     String key;
     Operator operator;
 
@@ -17,6 +27,6 @@ public class Filter implements Rule{
 
     @Override
     public boolean passes(String source) {
-        return this.operator.validate(source,key);
+        return this.operator.validate(source, key);
     }
 }

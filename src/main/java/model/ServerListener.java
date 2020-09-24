@@ -16,6 +16,7 @@ public class ServerListener {
         } catch (IOException e) {
             System.err.println("failed to bind to the port");
             System.err.println("exiting...");
+            System.exit(1);
             e.printStackTrace();
         }
         server.setExecutor(null); // creates a default executor

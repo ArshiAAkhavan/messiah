@@ -10,8 +10,9 @@ public class ProbeManager {
         this.probes.add(probe);
         serverListener=new ServerListener(8000);
     }
-    
+
     public void init(){
         probes.forEach(p -> serverListener.addContext(p.getPath(), t -> p.handle(t.getRequestBody().toString())));
+        serverListener.start();
     }
 }

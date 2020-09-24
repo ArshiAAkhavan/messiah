@@ -4,12 +4,10 @@ import model.Rule.Rule;
 import model.Responce.Action;
 
 import java.util.ArrayList;
-import java.util.function.Consumer;
-import java.util.function.ToIntFunction;
 
 public class Probe {
     String listenPath;
-    ArrayList<Rule>rules=new ArrayList<Rule>();
+    ArrayList<Rule>rules=new ArrayList<>();
     Action action;
 
     public Probe(String listenPath) {
