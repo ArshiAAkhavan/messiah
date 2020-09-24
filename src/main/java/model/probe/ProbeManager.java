@@ -1,34 +1,39 @@
 package model.probe;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import model.Receiver;
 
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 public class ProbeManager {
 
-    private ArrayList<Probe> probes=new ArrayList<>();
+    private ArrayList<Receiver> receivers = new ArrayList<>();
 
     @JsonIgnore
     Server server;
 
     public ProbeManager(int port) {
-        server =new Server(port);
+        server = new Server(port);
     }
+
     public ProbeManager() {
-        server= new Server(8000);
+        server = new Server(8000);
     }
 
-    public void addProbe(Probe probe){
-        this.probes.add(probe);
+    public void addReceiver(Receiver receiver) {
+        this.receivers.add(receiver);
     }
 
-    public void init(){
-        probes.forEach(p -> server.addContext(p.getPath(), t -> {
-            p.handle(new String(t.getRequestBody().readAllBytes(), "UTF-8"));
-            t.sendResponseHeaders(200, 0);
-            t.getResponseBody().write("".getBytes());
-            t.getResponseBody().close();
-        }));
-        server.start();
+    public void init() {
+        receivers.forEach(r -> {
+            System.out.println();
+            server.addContext(r.getPath(), t -> {
+                r.handle(new String(t.getRequestBody().readAllBytes(), "UTF-8"));
+                t.sendResponseHeaders(200, 0);
+                t.getResponseBody().write("".getBytes());
+                t.getResponseBody().close();
+            });
+        });
     }
 }
