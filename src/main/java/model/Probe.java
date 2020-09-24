@@ -4,10 +4,13 @@ import model.Rule.Rule;
 import model.Responce.Action;
 
 import java.util.ArrayList;
+import java.util.function.Consumer;
+import java.util.function.ToIntFunction;
+
 public class Probe {
     String listenPath;
     ArrayList<Rule>rules=new ArrayList<Rule>();
-    Action Action;
+    Action action;
 
     public Probe(String listenPath) {
         this.listenPath = listenPath;
@@ -18,6 +21,17 @@ public class Probe {
     }
 
     public void setAction(Action action) {
-        Action = action;
+        this.action = action;
+    }
+
+    public void handle(String input){
+        long count = this.rules.stream().mapToInt(r -> r.passes(input) ? 1 : 0).count();
+        if (count==this.rules.size()){
+            this.action.act(input);
+        }
+    }
+
+    public String getPath() {
+        return this.listenPath;
     }
 }
