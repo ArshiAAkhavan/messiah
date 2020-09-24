@@ -11,67 +11,28 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-            <source>5</source>
-            <target>5</target>
-        </configuration>
-    </plugin>
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-            <source>6</source>
-            <target>6</target>
-        </configuration>
-    </plugin>
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-            <source>7</source>
-            <target>7</target>
-        </configuration>
-    </plugin>
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-            <source>7</source>
-            <target>7</target>
-        </configuration>
-    </plugin>
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-            <source>8</source>
-            <target>8</target>
-        </configuration>
-    </plugin>
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-            <source>8</source>
-            <target>8</target>
-        </configuration>
-    </plugin>
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-            <source>9</source>
-            <target>9</target>
-        </configuration>
-    </plugin>
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
             <source>9</source>
             <target>9</target>
         </configuration>
     </plugin>
 </plugins></build>
+    <dependencies>
+        <dependency>
+            <groupId>com.gilecode.yagson</groupId>
+            <artifactId>yagson</artifactId>
+            <version>0.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
+            <version>2.9.8</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.9.8</version>
+        </dependency>
+    </dependencies>
 
 
 </project>

@@ -1,0 +1,11 @@
+---
+probes:
+- listenPath: "/test"
+  rules:
+  - key: "cassandra"
+    operator: {}
+  - key: "disk"
+    operator: {}
+  action:
+    command: "ls -lah"
+  path: "/test"
