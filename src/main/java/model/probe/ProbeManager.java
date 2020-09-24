@@ -1,10 +1,8 @@
 package model.probe;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import model.Receiver;
 
 import java.util.ArrayList;
-import java.util.function.Consumer;
 
 public class ProbeManager {
 
@@ -26,14 +24,15 @@ public class ProbeManager {
     }
 
     public void init() {
-        receivers.forEach(r -> {
+        for (Receiver r : receivers) {
             System.out.println();
             server.addContext(r.getPath(), t -> {
-                r.handle(new String(t.getRequestBody().readAllBytes(), "UTF-8"));
+                r.probes.get(0).handle(new String(t.getRequestBody().readAllBytes(), "UTF-8"));
+//                r.handle(new String(t.getRequestBody().readAllBytes(), "UTF-8"));
                 t.sendResponseHeaders(200, 0);
                 t.getResponseBody().write("".getBytes());
                 t.getResponseBody().close();
             });
-        });
+        }
     }
 }

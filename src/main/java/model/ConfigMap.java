@@ -21,7 +21,9 @@ public class ConfigMap {
     public ProbeManager load() {
 
         try {
-            return mapper.readValue(new File(path), ProbeManager.class);
+            ProbeManager probeManager = mapper.readValue(new File(path), ProbeManager.class);
+            return probeManager;
+
         } catch (IOException e) {
             e.printStackTrace();
         }

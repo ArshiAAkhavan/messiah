@@ -1,10 +1,11 @@
 ---
-probes:
+receivers:
 - path: "/test"
-  rules:
-  - key: "cassandra"
-    operator: "in"
-  - key: "disk"
-    operator: "not-in"
-  action:
-    command: "ls -lah"
+  probes:
+  - rules:
+    - key: "cassandra"
+      operator: "in"
+    - key: "disk"
+      operator: "not-in"
+    action:
+      command: "ls -lah"
