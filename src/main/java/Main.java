@@ -14,35 +14,34 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
 
-        Probe test=new Probe("/test");
-        test.addRule(new Filter("cassandra","in"));
-        test.addRule(new Filter("disk","not-in"));
+        Probe test = new Probe("/test");
+        test.addRule(new Filter("cassandra", "in"));
+        test.addRule(new Filter("disk", "not-in"));
         test.setAction(new Script("ls -lah"));
 
-        ProbeManager probeManager=new ProbeManager(8000);
+        ProbeManager probeManager = new ProbeManager(7000);
         probeManager.addProbe(test);
 
 
+        ObjectMapper mapper = new ObjectMapper(new YAMLFactory())
+                .findAndRegisterModules()
+                .setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY)
+                .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
+                .disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
 
-
-        ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-        mapper.findAndRegisterModules();
         try {
             ProbeManager probeManager1 = mapper.readValue(new File("src/main/resources/probe.yaml"), ProbeManager.class);
+            System.err.println("a");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
 
-//        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-        mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
-//
-//        mapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
-//        try {
-//            mapper.writeValue(new File("src/main/resources/probe.yaml"), probeManager);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            mapper.writeValue(new File("src/main/resources/probe.yaml"), probeManager);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 //        probeManager.init();
     }

@@ -1,7 +1,10 @@
 ---
-a:
-  id: 1
-  itemName: "a"
-  owner:
-    id: 3
-    name: "hasan"
+probes:
+- path: "/test"
+  rules:
+  - key: "cassandra"
+    operator: "in"
+  - key: "disk"
+    operator: "not-in"
+  action:
+    command: "ls -lah"

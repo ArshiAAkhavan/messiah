@@ -13,6 +13,7 @@ public class Probe {
     public Probe(String path) {
         this.path = path;
     }
+    public Probe(){}
 
     public void addRule(Rule rule){
         this.rules.add(rule);

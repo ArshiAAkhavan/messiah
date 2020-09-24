@@ -42,7 +42,7 @@ class FilterSerializer extends JsonSerializer<Filter> {
                           SerializerProvider serializerProvider) {
         try {
             jGen.writeStartObject();
-            jGen.writeStringField("type","filter");
+//            jGen.writeStringField("type","filter");
             jGen.writeStringField("key",filter.key);
             jGen.writeStringField("operator", filter.operator.getName());
             jGen.writeEndObject();
