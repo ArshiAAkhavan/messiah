@@ -1,11 +1,38 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import model.probe.ProbeManager;
 
-public class ConfigMap {
-    private final String path="./messiah.json";
+import java.io.File;
+import java.io.IOException;
 
-    public ProbeManager load(){
-    return null;
+public class ConfigMap {
+    private final String path = "src/main/resources/messiah.yaml";
+    private ObjectMapper mapper = new ObjectMapper(new YAMLFactory())
+            .findAndRegisterModules()
+            .setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY)
+            .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
+            .disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
+
+    public ProbeManager load() {
+
+        try {
+            return mapper.readValue(new File(path), ProbeManager.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return new ProbeManager(8000);
+    }
+
+    public void store(ProbeManager probeManager) {
+        try {
+            mapper.writeValue(new File(path), probeManager);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
