@@ -15,7 +15,6 @@ public class Filter implements Rule{
         this.operator = operators.get(operator);
     }
 
-
     @Override
     public boolean passes(String source) {
         return this.operator.validate(source,key);
