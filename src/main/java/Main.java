@@ -35,7 +35,7 @@ public class Main {
 
 
 //        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-//        mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
+        mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
 //
 //        mapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
 //        try {

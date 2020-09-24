@@ -1,13 +1,7 @@
 ---
-probes:
-- path: "/test"
-  rules:
-  - type: "filter"
-    key: "cassandra"
-    operator: "in"
-  - type: "filter"
-    key: "disk"
-    operator: "not-in"
-  action:
-    type: "script"
-    command: "ls -lah"
+a:
+  id: 1
+  itemName: "a"
+  owner:
+    id: 3
+    name: "hasan"
