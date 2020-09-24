@@ -22,18 +22,27 @@ public class Main {
         ProbeManager probeManager=new ProbeManager(8000);
         probeManager.addProbe(test);
 
+
+
+
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         mapper.findAndRegisterModules();
-//        Order order = mapper.readValue(new File("src/main/resources/orderInput.yaml"), Order.class);
-        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-        mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
-
-        mapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
         try {
-            mapper.writeValue(new File("src/main/resources/probe.yaml"), probeManager);
+            ProbeManager probeManager1 = mapper.readValue(new File("src/main/resources/probe.yaml"), ProbeManager.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
+//        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+//        mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
+//
+//        mapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
+//        try {
+//            mapper.writeValue(new File("src/main/resources/probe.yaml"), probeManager);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
 //        probeManager.init();
     }

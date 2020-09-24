@@ -5,4 +5,9 @@ public class In implements Operator{
     public boolean validate(String source, String key) {
         return source.contains(key);
     }
+
+    @Override
+    public String getName() {
+        return "in";
+    }
 }

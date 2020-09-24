@@ -1,11 +1,13 @@
 package model.responce;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+@JsonSerialize(using = ScriptSerializer.class)
 public class Script implements Action {
-
     String command;
 
     public Script(String command) {

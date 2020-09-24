@@ -6,12 +6,12 @@ import model.responce.Action;
 import java.util.ArrayList;
 
 public class Probe {
-    String listenPath;
+    String path;
     ArrayList<Rule>rules=new ArrayList<>();
     Action action;
 
-    public Probe(String listenPath) {
-        this.listenPath = listenPath;
+    public Probe(String path) {
+        this.path = path;
     }
 
     public void addRule(Rule rule){
@@ -30,6 +30,6 @@ public class Probe {
     }
 
     public String getPath() {
-        return this.listenPath;
+        return this.path;
     }
 }

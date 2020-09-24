@@ -1,11 +1,13 @@
 ---
 probes:
-- listenPath: "/test"
+- path: "/test"
   rules:
-  - key: "cassandra"
-    operator: {}
-  - key: "disk"
-    operator: {}
+  - type: "filter"
+    key: "cassandra"
+    operator: "in"
+  - type: "filter"
+    key: "disk"
+    operator: "not-in"
   action:
+    type: "script"
     command: "ls -lah"
-  path: "/test"

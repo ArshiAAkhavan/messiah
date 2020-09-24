@@ -1,7 +1,5 @@
 package model;
 
-import com.gilecode.yagson.YaGson;
-import com.gilecode.yagson.YaGsonBuilder;
 import model.probe.ProbeManager;
 
 public class ConfigMap {

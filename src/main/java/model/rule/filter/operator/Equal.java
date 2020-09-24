@@ -5,4 +5,9 @@ public class Equal implements Operator {
     public boolean validate(String source, String key) {
         return source.equals(key);
     }
+
+    @Override
+    public String getName() {
+        return "equal";
+    }
 }
