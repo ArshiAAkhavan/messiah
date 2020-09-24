@@ -23,8 +23,8 @@ public class Probe {
     }
 
     public void handle(String input){
-        long count = this.rules.stream().mapToInt(r -> r.passes(input) ? 1 : 0).count();
-        if (count==this.rules.size()){
+        int sum = this.rules.stream().mapToInt(r -> r.passes(input) ? 1 : 0).sum();
+        if (sum==this.rules.size()){
             this.action.act(input);
         }
     }

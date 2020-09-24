@@ -8,7 +8,7 @@ public class Main {
 
         Probe test=new Probe("/test");
         test.addRule(new Filter("cassandra","in"));
-        test.addRule(new Filter("disk","in"));
+        test.addRule(new Filter("disk","not-in"));
         test.setAction(new Script("ls -lah"));
 
         ProbeManager probeManager=new ProbeManager();
