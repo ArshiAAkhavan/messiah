@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class ConfigMap {
     private final String path = "src/main/resources/messiah.yaml";
-    private ObjectMapper mapper = new ObjectMapper(new YAMLFactory())
+    private final ObjectMapper mapper = new ObjectMapper(new YAMLFactory())
             .findAndRegisterModules()
             .setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY)
             .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
