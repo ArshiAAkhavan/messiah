@@ -2,7 +2,9 @@ package model.probe;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 public class ProbeManager {
 
@@ -24,15 +26,15 @@ public class ProbeManager {
     }
 
     public void init() {
-        for (Receiver r : receivers) {
+        receivers.forEach(r -> {
             System.out.println();
             server.addContext(r.getPath(), t -> {
-                r.probes.get(0).handle(new String(t.getRequestBody().readAllBytes(), "UTF-8"));
+                r.handle(new String(t.getRequestBody().readAllBytes(), "UTF-8"));
                 t.sendResponseHeaders(200, 0);
                 t.getResponseBody().write("".getBytes());
                 t.getResponseBody().close();
             });
-        }
+        });
         this.server.start();
     }
 }

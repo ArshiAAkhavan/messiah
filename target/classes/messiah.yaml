@@ -9,3 +9,10 @@ receivers:
       operator: "not-in"
     action:
       command: "ls -lah"
+  - rules:
+    - key: "mongo"
+      operator: "in"
+    - key: "cpu"
+      operator: "not-in"
+    action:
+      command: "ls -lah"
