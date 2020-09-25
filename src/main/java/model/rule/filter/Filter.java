@@ -12,6 +12,7 @@ import model.rule.filter.operator.NotIn;
 import model.rule.filter.operator.Operator;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Map;
 
 @JsonSerialize(using = FilterSerializer.class)
@@ -34,7 +35,13 @@ public class Filter implements Rule {
     public boolean passes(String source) {
         return this.operator.validate(source, key);
     }
+
+    public static Map<String, Operator> getOperators() {
+        return Collections.unmodifiableMap(operators);
+    }
 }
+
+
 class FilterSerializer extends JsonSerializer<Filter> {
     @Override
     public void serialize(Filter filter,
