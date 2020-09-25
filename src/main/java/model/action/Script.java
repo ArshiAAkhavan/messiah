@@ -1,4 +1,4 @@
-package model.responce;
+package model.action;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -15,7 +15,7 @@ public class Script implements Action {
     }
 
     @Override
-    public void act(String input) {
+    public int act(String input) {
         try {
             String s;
             Process p=Runtime.getRuntime().exec(command+" "+input);
@@ -25,9 +25,11 @@ public class Script implements Action {
             p.waitFor();
             System.out.println("exit: " + p.exitValue());
             p.destroy();
+            return p.exitValue();
         } catch (InterruptedException | IOException e) {
             e.printStackTrace();
         }
+        return -1;
     }
 
 }

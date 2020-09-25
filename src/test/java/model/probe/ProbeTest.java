@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class ProbeTest {
 
-    public Probe generateTestProbe(){
+    Probe generateTestProbe(){
         Probe p=new Probe();
         p.addRule(new Filter("test-technology","in"));
         p.addRule(new Filter("hardware-problem","not-in"));
@@ -13,7 +13,7 @@ public class ProbeTest {
     }
 
     @Test
-    public void handle(){
+    void handle(){
 
     }
 

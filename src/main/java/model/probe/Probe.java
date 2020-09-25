@@ -1,7 +1,7 @@
 package model.probe;
 
 import model.rule.Rule;
-import model.responce.Action;
+import model.action.Action;
 
 import java.util.ArrayList;
 

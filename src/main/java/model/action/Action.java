@@ -1,4 +1,4 @@
-package model.responce;
+package model.action;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
@@ -9,14 +9,12 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.databind.jsontype.TypeSerializer;
-import model.rule.Rule;
-import model.rule.filter.Filter;
 
 import java.io.IOException;
 
 @JsonDeserialize(using = ActionDeserializer.class)
 public interface Action {
-    void act(String input);
+    int act(String input);
 }
 class ScriptSerializer extends JsonSerializer<Script> {
     @Override
