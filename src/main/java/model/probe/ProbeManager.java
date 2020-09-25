@@ -34,5 +34,6 @@ public class ProbeManager {
                 t.getResponseBody().close();
             });
         }
+        this.server.start();
     }
 }
