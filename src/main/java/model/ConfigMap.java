@@ -34,7 +34,7 @@ public class ConfigMap {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new ProbeManager(8000);
+        return new ProbeManager(9000);
 
     }
 

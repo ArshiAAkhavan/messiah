@@ -15,7 +15,7 @@ public class ProbeManager {
     }
 
     public ProbeManager() {
-        server = new Server(8000);
+        server = new Server(7000);
     }
 
     public ProbeManager addReceiver(Receiver receiver) {

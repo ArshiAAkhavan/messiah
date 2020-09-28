@@ -34,7 +34,7 @@ class ConfigMapTest {
     }
 
     ProbeManager generateProbeManager(){
-        return new ProbeManager(4545)
+        return new ProbeManager(9000)
                 .addReceiver(generateReceiver("/cassandra","cassandra","scylla"))
                 .addReceiver(generateReceiver("/k8s","k8s","docker"))
                 .addReceiver(generateReceiver("/monitoring","grafana","datadog"));
