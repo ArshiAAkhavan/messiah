@@ -1,0 +1,50 @@
+---
+receivers:
+- path: "/cassandra"
+  probes:
+  - rules:
+    - key: "cassandra"
+      operator: "in"
+    - key: "cpu"
+      operator: "not-in"
+    action:
+      command: "echo"
+  - rules:
+    - key: "scylla"
+      operator: "in"
+    - key: "disk-usage"
+      operator: "not-in"
+    action:
+      command: "echo"
+- path: "/k8s"
+  probes:
+  - rules:
+    - key: "k8s"
+      operator: "in"
+    - key: "cpu"
+      operator: "not-in"
+    action:
+      command: "echo"
+  - rules:
+    - key: "docker"
+      operator: "in"
+    - key: "disk-usage"
+      operator: "not-in"
+    action:
+      command: "echo"
+- path: "/monitoring"
+  probes:
+  - rules:
+    - key: "grafana"
+      operator: "in"
+    - key: "cpu"
+      operator: "not-in"
+    action:
+      command: "echo"
+  - rules:
+    - key: "datadog"
+      operator: "in"
+    - key: "disk-usage"
+      operator: "not-in"
+    action:
+      command: "echo"

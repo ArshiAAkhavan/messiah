@@ -19,12 +19,14 @@ public class Probe {
             this.action.act(input);
         }
     }
-    public void addRule(Rule rule){
+    public Probe addRule(Rule rule){
         this.rules.add(rule);
+        return this;
     }
 
-    public void setAction(Action action) {
+    public Probe setAction(Action action) {
         this.action = action;
+        return this;
     }
 
 

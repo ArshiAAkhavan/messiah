@@ -1,10 +1,7 @@
 package model.probe;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.function.Consumer;
 
 public class ProbeManager {
 
@@ -21,8 +18,9 @@ public class ProbeManager {
         server = new Server(8000);
     }
 
-    public void addReceiver(Receiver receiver) {
+    public ProbeManager addReceiver(Receiver receiver) {
         this.receivers.add(receiver);
+        return this;
     }
 
     public void init() {
