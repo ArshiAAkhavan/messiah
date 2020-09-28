@@ -6,6 +6,7 @@ public class Receiver {
     private String path;
     ArrayList<Probe>probes=new ArrayList<>();
 
+    public Receiver(){}
     public Receiver(String path) {
         this.path=path;
     }
