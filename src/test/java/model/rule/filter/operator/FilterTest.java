@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class FilterTest {
 
     @Test
-    void passTest(){
+    public void passTest(){
         Filter f=new Filter("technology","in");
         assertTrue(f.passes("21'st century is the center of technology"));
         assertFalse(f.passes("tech+no+logy is what makes today's world possible"));

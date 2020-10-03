@@ -12,14 +12,14 @@ public class OperatorsTest {
     private Map<String, Operator>operators=Filter.getOperators();
 
     @Test
-    void nameMatchTest(){
+    public void nameMatchTest(){
         for (Map.Entry<String, Operator> entry : operators.entrySet()) {
             assertEquals(entry.getKey(),entry.getValue().getName());
         }
     }
 
     @Test
-    void inOperatorTest(){
+    public void inOperatorTest(){
         Operator in=operators.get("in");
         assertTrue(in.validate("i am testing","test"));
         assertTrue(in.validate("i am testing","testing"));
@@ -31,7 +31,7 @@ public class OperatorsTest {
     }
 
     @Test
-    void notInOperatorTest(){
+    public void notInOperatorTest(){
         Operator notIn=operators.get("not-in");
         assertFalse(notIn.validate("i am testing","test"));
         assertFalse(notIn.validate("i am testing","testing"));
@@ -43,7 +43,7 @@ public class OperatorsTest {
 
     }
     @Test
-    void equalsOperatorTest(){
+    public void equalsOperatorTest(){
         Operator equal=operators.get("equal");
         assertFalse(equal.validate("i am testing","test"));
         assertFalse(equal.validate("i am testing","testing"));
